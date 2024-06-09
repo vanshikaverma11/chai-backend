@@ -15,6 +15,7 @@
   "author": "Hitesh",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.14.2",
     "nodemon": "^3.1.3",
     "prettier": "^3.3.1"
   },
