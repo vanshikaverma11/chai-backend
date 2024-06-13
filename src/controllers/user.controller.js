@@ -16,7 +16,7 @@ const registerUser = asyncHandler( async (req, res) => {
     // return res
 
     const {fullName, email, username, password} = req.body
-    console.log("email:", email);
+    //console.log("email:", email);
 
     if (
         [fullName, email, username, password].some((field) => field?.trim() === "")
@@ -47,7 +47,7 @@ const registerUser = asyncHandler( async (req, res) => {
         coverImage: coverImage.url || "",  
         email,
         password,
-        username: username.tolowerCase()
+        username: username.toLowerCase()
     })
 
     const createdUser = await User.findById(user._id).select(
@@ -57,7 +57,7 @@ const registerUser = asyncHandler( async (req, res) => {
         throw new ApiError(500, "something went wrong while registrating ther user")
     }
     return res.status(201).json(
-        new ApiResponse(200, createdUser, "user registered successfully")
+        new ApiResponse(201, createdUser, "user registered successfully")
     )
 })
 
