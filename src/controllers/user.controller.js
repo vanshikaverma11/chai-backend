@@ -29,7 +29,7 @@ const registerUser = asyncHandler( async (req, res) =>
     })
 
     if (existedUser) {
-        throw new ApiError(409, "User with username and email es already exists")
+        throw new ApiError(409, "User with username and email already exists")
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
@@ -40,7 +40,7 @@ const registerUser = asyncHandler( async (req, res) =>
     const avatar = await uploadOnCloudinary(avatarLocalPath)
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
     if (!avatar) {
-        throw new ApiError(409, "User with email or username already exists")
+        throw new ApiError(400, "User with email or username already exists")
     }
     const user =  await User.create({
         fullName,
@@ -58,7 +58,7 @@ const registerUser = asyncHandler( async (req, res) =>
         throw new ApiError(500, "something went wrong while registrating ther user")
     }
     return res.status(201).json(
-        new ApiResponse(209, createdUser, "user registered successfully")
+        new ApiResponse(200, createdUser, "user registered successfully")
     )
 })
 
