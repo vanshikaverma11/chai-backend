@@ -19,7 +19,7 @@ const userSchema = new Schema(
             lowecase: true,
             trim: true, 
         },
-        fullName: {
+        fullname: {
             type: String,
             required: true,
             trim: true, 
@@ -29,7 +29,7 @@ const userSchema = new Schema(
             type: String, // cloudinary url
             required: true,
         },
-        coverImage: {
+        coverimage: {
             type: String, // cloudinary url
         },
         watchHistory: [
